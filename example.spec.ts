@@ -1,99 +1,27 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test('has title', async ({ page }) => {
   await page.goto('https://c.hr.dmerej.info/');
-  await page.getByRole('link', { name: 'List Employees' }).click();
-  await page.getByRole('link', { name: 'Home' }).click();
-  await page.getByRole('link', { name: 'Add new employee' }).click();
-  await page.getByRole('group', { name: 'Basic Info' }).click();
-  await page.getByPlaceholder('Name').fill('Jesus');
-  await page.getByPlaceholder('Name').press('Tab');
-  await page.getByPlaceholder('Email').fill('filsd\'undieu@jesus.com');
-  await page.getByRole('group', { name: 'Address' }).click();
-  await page.locator('#id_address_line1').click();
-  await page.getByPlaceholder('Email').dblclick();
-  await page.getByPlaceholder('Email').fill('filsd\'undieu@jesus.ragnarok');
-  await page.locator('#id_address_line1').click();
-  await page.locator('#id_address_line1').fill('31 rue des ressucite');
-  await page.getByPlaceholder('City').click();
+
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/HR DB/);
+});
+
+
+test('Add employee', async ({ page }) => {
+  await page.goto('https://c.hr.dmerej.info/add_employee');
+
+  await page.getByPlaceholder('Name').fill('killian');
+  await page.getByPlaceholder('Email').fill('jesuisgay@dogo.com');
+  await page.locator('#id_address_line1').fill('place de la Nation');
+  await page.locator('#id_address_line2').fill('');
   await page.getByPlaceholder('City').fill('Palestine');
-  await page.locator('div').filter({ hasText: 'Zip code' }).click();
-  await page.getByPlaceholder('Zip code').fill('0000');
-  await page.getByPlaceholder('Job title').click();
-  await page.getByPlaceholder('Job title').fill('Jesus');
+  await page.getByPlaceholder('Zip code').fill('2024')
+  await page.getByPlaceholder('Hiring date').fill('2024-01-24');
+  await page.getByPlaceholder('Job title').fill('Createur de FurSuit');
   await page.getByRole('button', { name: 'Add' }).click();
-  await page.getByRole('link', { name: 'Home' }).click();
-  await page.getByRole('link', { name: 'Add new employee' }).click();
-  await page.getByPlaceholder('Name').click();
-  await page.getByPlaceholder('Name').fill('Jonathan');
-  await page.getByPlaceholder('Email').click();
-  await page.getByPlaceholder('Email').fill('Doe.Jon@fzghdj.com');
-  await page.getByText('Address').click();
-  await page.locator('#id_address_line1').click();
-  await page.locator('#id_address_line1').fill('fzzfezfe');
-  await page.locator('#id_address_line2').click();
-  await page.locator('#id_address_line2').fill('vevvv');
-  await page.getByPlaceholder('City').click();
-  await page.getByPlaceholder('City').fill('manchester');
-  await page.getByPlaceholder('Zip code').click();
-  await page.getByPlaceholder('Zip code').fill('2');
-  await page.getByPlaceholder('Hiring date').fill('11851-04-05');
-  await page.getByPlaceholder('Job title').click();
-  await page.getByPlaceholder('Job title').fill('riien');
-  await page.getByPlaceholder('Job title').press('Enter');
-  await page.getByText('Hiring date Enter a valid').click();
-  await page.getByPlaceholder('Hiring date').fill('1555-04-05');
-  await page.getByRole('button', { name: 'Add' }).click();
-  await page.getByRole('row', { name: 'Jonathan Doe.Jon@fzghdj.com' }).getByRole('link').first().click();
-  await page.getByRole('link', { name: 'Promote as manager' }).click();
-  await page.getByRole('button', { name: 'Proceed' }).click();
-  await page.getByRole('link', { name: 'Home' }).click();
-  await page.getByRole('link', { name: 'List teams' }).click();
-  await page.getByRole('link', { name: 'Home' }).click();
-  await page.getByRole('link', { name: 'List Employees' }).click();
-  await page.getByRole('row', { name: 'Jonathan Doe.Jon@fzghdj.com' }).getByRole('cell').nth(3).click();
-  await page.getByRole('link', { name: 'Add to team' }).click();
-  await page.getByLabel('Team').selectOption('19');
-  await page.getByRole('button', { name: 'Add' }).click();
-  await page.getByRole('link', { name: 'Home' }).click();
-  await page.getByRole('link', { name: 'List Employees' }).click();
-  await page.getByRole('row', { name: 'Jesus filsd\'undieu@jesus.' }).getByRole('link').first().click();
-  await page.getByRole('link', { name: 'Add to team' }).click();
-  await page.getByRole('button', { name: 'Add' }).click();
-  await page.getByRole('link', { name: 'Home' }).click();
-  await page.getByRole('link', { name: 'List Employees' }).click();
-  await page.getByRole('link', { name: 'Home' }).click();
-  await page.getByRole('link', { name: 'Add new employee' }).click();
-  await page.getByPlaceholder('Name').click();
-  await page.getByPlaceholder('Name').fill('fefefee');
-  await page.getByPlaceholder('Email').click();
-  await page.getByPlaceholder('Email').fill('eeeeeee');
-  await page.getByRole('group', { name: 'Address' }).click();
-  await page.getByRole('group', { name: 'Address' }).click();
-  await page.locator('#id_address_line1').click();
-  await page.locator('#id_address_line1').fill('ffff');
-  await page.locator('div').filter({ hasText: 'City' }).click();
-  await page.getByPlaceholder('City').fill('²²²²²');
-  await page.getByRole('group', { name: 'Address' }).click();
-  await page.getByPlaceholder('Zip code').click();
-  await page.getByPlaceholder('Zip code').fill('');
-  await page.getByPlaceholder('Hiring date').fill('8888-08-25');
-  await page.getByPlaceholder('Job title').click();
-  await page.getByPlaceholder('Job title').fill('eee');
-  await page.getByRole('button', { name: 'Add' }).click();
-  await page.getByPlaceholder('Email').fill('eeeeeee@');
-  await page.getByRole('button', { name: 'Add' }).click();
-  await page.getByPlaceholder('Email').fill('eeeeeee@zz.');
-  await page.getByRole('button', { name: 'Add' }).click();
-  await page.getByPlaceholder('Email').fill('eeeeeee@zz.c');
-  await page.getByRole('button', { name: 'Add' }).click();
-  await page.getByPlaceholder('Zip code').dblclick();
-  await page.getByPlaceholder('Zip code').click();
-  await page.getByPlaceholder('Zip code').click();
-  await page.getByPlaceholder('Zip code').click();
-  await page.getByPlaceholder('Zip code').fill('8');
-  await page.getByRole('button', { name: 'Add' }).click();
-  await page.getByPlaceholder('Email').click();
-  await page.getByPlaceholder('Email').fill('eeeeeee@zz.com');
-  await page.getByRole('button', { name: 'Add' }).click();
+
+
+  await expect(page).toHaveURL('https://c.hr.dmerej.info/employees');
+
 });
